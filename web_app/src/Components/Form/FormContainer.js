@@ -9,20 +9,49 @@ class FormContainer extends Component {
         super(props);
         this.state = {
             isForm: false,
+            task: "",
+            date: ""
         }
     }
     toggle() {
         const flag = !this.state.isForm;
         this.setState({ isForm: flag });
     }
+    updateTask(val) {
+        console.log(val);
+        const task = val;
+        this.setState({ task })
+    }
+    updateDate(val) {
+        console.log(val);
+        const date = val;
+        this.setState({ date })
+    }
+    submit() {
+        console.log(this.state.task);
+        console.log(this.state.date);
+        this.toggle();
+        const task = "";
+        const date = "";
+        this.setState({ task, date });
+    }
     render() {
         if (this.state.isForm) {
             return (
                 <div className="container">
                     <Card>
-                        <input type="text" placeholder="Add ToDo" />
-                        <input type='date' />
-                        <Button onClick={() => { this.toggle() }}>Add</Button>
+                        <input
+                            type="text"
+                            value={this.state.task}
+                            placeholder="Add ToDo"
+                            onChange={(e) => { this.updateTask(e.target.value) }}
+                        />
+                        <input
+                            type='date'
+                            value={this.state.date}
+                            onChange={(e) => { this.updateDate(e.target.value) }}
+                        />
+                        <Button onClick={() => { this.submit() }}>Add</Button>
                     </Card>
                 </div>
             );
@@ -30,7 +59,7 @@ class FormContainer extends Component {
         else {
             return (
                 <div className="add-todo">
-                    <Button onClick={() => { this.toggle() }}>Add ToDo</Button>
+                    <Button style="width:300px" onClick={() => { this.toggle() }}>Add Task</Button>
                 </div>
             );
         }
