@@ -42,6 +42,9 @@ class FormContainer extends Component {
       return (
         <div className="container">
           <Card>
+            <div class="back">
+              <p onClick={() => this.toggle()}>&#10094; Back</p>
+            </div>
             <div>
               {/* <label> Add Task</label> */}
               <input
