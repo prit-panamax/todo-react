@@ -18,18 +18,20 @@ class FormContainer extends Component {
     this.setState({ isForm: flag });
   }
   updateTask(val) {
-    console.log(val);
+    // console.log(val);
     const task = val;
     this.setState({ task });
   }
   updateDate(val) {
-    console.log(val);
+    // console.log(val);
     const date = val;
     this.setState({ date });
   }
   submit() {
-    console.log(this.state.task);
-    console.log(this.state.date);
+    // console.log(this.state.task);
+    // console.log(this.state.date);
+    const newTask = { id: Date.now(), task: this.state.task, date: this.state.date };
+    this.props.callback(newTask);
     this.toggle();
     const task = "";
     const date = "";
@@ -51,24 +53,25 @@ class FormContainer extends Component {
                 }}
               />
             </div>
-            <br/>
+            <br />
             <div>
               {/* <label> Add Task</label> */}
-            <input
-              type="date"
-              value={this.state.date}
-              onChange={(e) => {
-                this.updateDate(e.target.value);
-              }}
-            />
+              <input
+                type="date"
+                value={this.state.date}
+                onChange={(e) => {
+                  this.updateDate(e.target.value);
+                }}
+              />
             </div>
             <div className="submit-container">
-            <Button
-              onClick={() => {
-                this.submit();
-              }}
-            >
-              Add
+              <Button
+                disabled={!(this.state.task.length && this.state.date.length)}
+                onClick={() => {
+                  this.submit();
+                }}
+              >
+                Add
             </Button>
             </div>
             {/* </div> */}
