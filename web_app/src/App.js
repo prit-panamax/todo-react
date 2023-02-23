@@ -1,15 +1,12 @@
 import Button from './Components/UI/Button';
 import Card from './Components/UI/Card';
-import FormContainer from './Components/Form/FormContainer';
 import './App.css';
 
 
 function App() {
   return (
-    <div>
-
-    </div>
-  );
+    <Card cardNumber = "5"> <Button>Remove</Button></Card>
+    );
 }
 
 export default App;
