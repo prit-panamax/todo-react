@@ -66,7 +66,7 @@ class FormContainer extends Component {
             </div>
             <div className="submit-container">
               <Button
-                disabled={!(this.state.task.length && this.state.date.length)}
+                disabled={!(this.state.task.trim().length && this.state.date.length)}
                 onClick={() => {
                   this.submit();
                 }}

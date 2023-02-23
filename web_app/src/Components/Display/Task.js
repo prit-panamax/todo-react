@@ -1,6 +1,8 @@
 import { Component } from "react";
 import Card from "../UI/Card";
+import Button from "../UI/Button";
 import "./Task.css";
+import { myContext } from "../../App";
 
 class Task extends Component {
   constructor(props) {
@@ -11,16 +13,23 @@ class Task extends Component {
     this.sampleTask = "This is first task";
     this.sampleDate = new Date();
   }
-
+  remove(key, list){
+    console.log("KEY",key,"list",list)
+    console.log("Hello from remove");
+    const newList = list.filter(task=>task.id !== key);
+  }
   render() {
     return (
-      <Card cardNumber="1">
+      <myContext.Consumer>{ ({list,deleteItem}) =>{
+     return <Card cardNumber="1">
         <div class="task__icon">
           <i class="fas fa-bolt"></i>
         </div>
-        <h2 class="card__title">Ut enim ad minim veniam.</h2>
+        <h2 class="card__title">{this.props.taskText}</h2>
         <p></p>
-      </Card>
+        <Button onClick={()=>deleteItem(this.props.id)}>Remove</Button>
+      </Card>}}
+      </myContext.Consumer>
     );
   }
 }

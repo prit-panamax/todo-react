@@ -11,13 +11,17 @@ function App() {
 
   const [list, setList] = useState([])
 
-  console.log(list);
+  // console.log(list);
+  const deleteItem = (id) =>{
+    const newList = list.filter(task=>task.id !== id); 
+    setList(newList);
+  }
 
   function formCallback(task) {
     setList([...list, task]);
   }
 
-  return (<myContext.Provider value={list}>
+  return (<myContext.Provider value={{list,deleteItem}}>
     <FormContainer callback={formCallback}></FormContainer>
     <Container></Container>
   </myContext.Provider>
