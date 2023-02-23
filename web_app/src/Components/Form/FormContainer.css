@@ -2,16 +2,10 @@
     display:flex;
     justify-content: center;
 }
-/* .form-content{
+.form-content{
     text-align: center;
-} */
-.add-todo {
-    display: flex;
-    justify-content: center;
 }
-.submit-container{
 
-}
 input {
     flex-shrink: 0;
     /* border-image-source: linear-gradient(rgba(59, 197, 5, 0.5), rgba(30, 181, 240, 0.434)); */
