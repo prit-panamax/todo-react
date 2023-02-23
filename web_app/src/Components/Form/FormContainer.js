@@ -39,17 +39,21 @@ class FormContainer extends Component {
     if (this.state.isForm) {
       return (
         <div className="container">
-          <Card >
-            <input
-              type="text"
-              value={this.state.task}
-              placeholder="Add ToDo"
-              onChange={(e) => {
-                this.updateTask(e.target.value);
-              }}
-            />
+          <Card>
+            <div>
+              {/* <label> Add Task</label> */}
+              <input
+                type="text"
+                value={this.state.task}
+                placeholder="Add ToDo"
+                onChange={(e) => {
+                  this.updateTask(e.target.value);
+                }}
+              />
+            </div>
             <br/>
-            <br/>
+            <div>
+              {/* <label> Add Task</label> */}
             <input
               type="date"
               value={this.state.date}
@@ -57,6 +61,8 @@ class FormContainer extends Component {
                 this.updateDate(e.target.value);
               }}
             />
+            </div>
+            <div className="submit-container">
             <Button
               onClick={() => {
                 this.submit();
@@ -64,13 +70,14 @@ class FormContainer extends Component {
             >
               Add
             </Button>
+            </div>
             {/* </div> */}
           </Card>
         </div>
       );
     } else {
       return (
-        <div className="add-todo">
+        <div className="container">
           <Button
             // style="width:300px"
             onClick={() => {

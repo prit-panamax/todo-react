@@ -1,12 +1,14 @@
-import Button from './Components/UI/Button';
-import Card from './Components/UI/Card';
-import './App.css';
-
+import FormContainer from "./Components/Form/FormContainer";
+import Container from "./Components/Display/Container";
+import "./App.css";
 
 function App() {
   return (
-    <Card cardNumber = "5"> <Button>Remove</Button></Card>
-    );
+    <div>
+      <FormContainer></FormContainer>
+      <Container></Container>
+    </div>
+  );
 }
 
 export default App;

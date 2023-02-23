@@ -7,11 +7,16 @@
 } */
 .add-todo {
     display: flex;
+    justify-content: center;
+}
+.submit-container{
+
 }
 input {
-    border-image-source: linear-gradient(rgba(59, 197, 5, 0.5), rgba(30, 181, 240, 0.434));
+    flex-shrink: 0;
+    /* border-image-source: linear-gradient(rgba(59, 197, 5, 0.5), rgba(30, 181, 240, 0.434)); */
     border-width: 3pt;
-    /* width: 90%; */
+    width: 90%;
     border-image-slice: 1;
     font-size: larger;
     position: relative;
