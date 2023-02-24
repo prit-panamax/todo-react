@@ -2,7 +2,7 @@ import { Component } from "react";
 import Card from "../UI/Card";
 import "./Container.css";
 import Task from "./Task";
-import {myContext} from '../../App.js';
+import { myContext } from '../../App.js';
 
 class Container extends Component {
   constructor(props) {
@@ -13,21 +13,21 @@ class Container extends Component {
   }
   render() {
     return (
-      <myContext.Consumer>   
-        {  ({list,deleteItem}) =>{ 
-        return <div className="c1">
-        <div class="heading">
-          <h1 class="heading__title">Tasks Sheduled For</h1>
-          <p className="heading__date">{this.state.dateSelectd}</p>
-        </div>
-        <div className="cards">
-          {list.map(task => {
-            return <Task taskText = {task.task} key={task.id} id = {task.id}></Task>
-          })}
+      <myContext.Consumer>
+        {({ list, deleteItem }) => {
+          return <div className="c1">
+            <div className="heading">
+              <h1 className="heading__title">Tasks Sheduled For</h1>
+              <p className="heading__date">{this.state.dateSelectd}</p>
+            </div>
+            <div className="cards">
+              {list.map(task => {
+                return <Task taskText={task.task} key={task.id} id={task.id}></Task>
+              })}
 
-        </div>
-      </div>
-  }}</myContext.Consumer>
+            </div>
+          </div>
+        }}</myContext.Consumer>
     );
   }
 }

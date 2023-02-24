@@ -13,23 +13,20 @@ class Task extends Component {
     this.sampleTask = "This is first task";
     this.sampleDate = new Date();
   }
-  remove(key, list){
-    console.log("KEY",key,"list",list)
-    console.log("Hello from remove");
-    const newList = list.filter(task=>task.id !== key);
-  }
   render() {
     return (
-      <myContext.Consumer>{ ({list,deleteItem}) =>{
-     return <Card cardNumber="1">
-        <div class="task__icon">
-          <i class="fas fa-bolt"></i>
-        </div>
-        <h2 class="card__title">{this.props.taskText}</h2>
-        <p></p>
-        <Button onClick={()=>deleteItem(this.props.id)}>Remove</Button>
-      </Card>}}
-      </myContext.Consumer>
+      <myContext.Consumer>{({ list, deleteItem }) => {
+        return <Card cardNumber="1">
+          <div className="task__icon">
+            <i className="fas fa-bolt"></i>
+          </div>
+          <h2 className="card__title">{this.props.taskText}</h2>
+          <p></p>
+          <Button onClick={() => deleteItem(this.props.id)}>Remove</Button>
+        </Card>
+      }
+      }
+      </myContext.Consumer >
     );
   }
 }
