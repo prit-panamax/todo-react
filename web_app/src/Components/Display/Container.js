@@ -8,20 +8,38 @@ class Container extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      dateSelectd: new Date().toDateString(),
+      // dateSelected: new Date().toISOString().slice(0, 10),
+      dateSelected: "",
     };
+  }
+  selectDate(val) {
+    this.setState({ dateSelected: val });
   }
   render() {
     return (
       <myContext.Consumer>
-        {({ list, deleteItem, changeTask }) => {
+        {({ currentList, filterList, removeFilter }) => {
           return <div className="c1">
             <div className="heading">
               <h1 className="heading__title">Tasks Sheduled For</h1>
-              <p className="heading__date">{this.state.dateSelectd}</p>
+              <div className='filter'>
+                <input
+                  type="date"
+                  value={this.state.dateSelected}
+                  onChange={(e) => {
+                    this.selectDate(e.target.value);
+                    filterList(e.target.value);
+                  }} />
+                <p
+                  onClick={() => {
+                    this.selectDate("");
+                    removeFilter();
+                  }}>&#10006;</p>
+              </div>
+              {/* <p className="heading__date">{this.state.dateSelectd}</p> */}
             </div>
             <div className="cards">
-              {list.map(task => {
+              {currentList.map(task => {
                 return <Task task={task} key={task.id}></Task>
               })}
 

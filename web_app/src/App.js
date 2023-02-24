@@ -9,16 +9,26 @@ export const myContext = createContext();
 
 function App() {
 
-  const [list, setList] = useState([])
+  const [list, setList] = useState([]);
+  const [currentList, setCurrentList] = useState([]);
+  console.log('list', list);
+  console.log('currentList', currentList);
 
-  console.log(list);
+  function filterList(date) {
+    const filteredList = list.filter((item) => item.date === date);
+    setCurrentList(filteredList);
+  }
+
   const deleteItem = (id) => {
     const newList = list.filter(task => task.id !== id);
     setList(newList);
+
+    const newCurrentList = currentList.filter(task => task.id !== id);
+    setCurrentList(newCurrentList);
   }
 
   function changeTask(id) {
-    const newList = []
+    const newList = [];
     for (const item of list) {
       if (item.id === id) {
         item.completed = !item.completed;
@@ -26,13 +36,27 @@ function App() {
       newList.push(item);
     }
     setList(newList);
+
+    // const newCurrentList = [];
+    // for (const item of currentList) {
+    //   if (item.id === id) {
+    //     item.completed = !item.completed;
+    //   }
+    //   newCurrentList.push(item);
+    // }
+    // setCurrentList(newCurrentList);
+  }
+
+  function removeFilter() {
+    setCurrentList(list);
   }
 
   function formCallback(task) {
     setList([...list, task]);
+    setCurrentList([...list, task]);
   }
 
-  return (<myContext.Provider value={{ list, deleteItem, changeTask }}>
+  return (<myContext.Provider value={{ currentList, deleteItem, changeTask, filterList, removeFilter }}>
     <FormContainer callback={formCallback}></FormContainer>
     <Container></Container>
   </myContext.Provider>

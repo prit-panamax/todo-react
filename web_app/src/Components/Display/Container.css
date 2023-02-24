@@ -32,3 +32,12 @@
   font-size: 25px;
   transition: all 0.5s;
 }
+
+.filter {
+  display:flex;
+  justify-content: space-between;
+}
+
+.filter p {
+  cursor: default;
+}

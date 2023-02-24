@@ -15,7 +15,7 @@ class Task extends Component {
   }
   render() {
     return (
-      <myContext.Consumer>{({ list, deleteItem, changeTask }) => {
+      <myContext.Consumer>{({ deleteItem, changeTask }) => {
         return <Card cardNumber="1">
           {/* <div className="task__icon">
             <i className="fas fa-bolt"></i>
