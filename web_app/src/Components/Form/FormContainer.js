@@ -30,7 +30,7 @@ class FormContainer extends Component {
   submit() {
     // console.log(this.state.task);
     // console.log(this.state.date);
-    const newTask = { id: Date.now(), task: this.state.task, date: this.state.date };
+    const newTask = { id: Date.now(), task: this.state.task, date: this.state.date, completed: false };
     this.props.callback(newTask);
     this.toggle();
     const task = "";

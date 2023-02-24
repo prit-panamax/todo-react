@@ -14,7 +14,7 @@ class Container extends Component {
   render() {
     return (
       <myContext.Consumer>
-        {({ list, deleteItem }) => {
+        {({ list, deleteItem, changeTask }) => {
           return <div className="c1">
             <div className="heading">
               <h1 className="heading__title">Tasks Sheduled For</h1>
@@ -22,7 +22,7 @@ class Container extends Component {
             </div>
             <div className="cards">
               {list.map(task => {
-                return <Task taskText={task.task} key={task.id} id={task.id}></Task>
+                return <Task task={task} key={task.id}></Task>
               })}
 
             </div>

@@ -15,14 +15,17 @@ class Task extends Component {
   }
   render() {
     return (
-      <myContext.Consumer>{({ list, deleteItem }) => {
+      <myContext.Consumer>{({ list, deleteItem, changeTask }) => {
         return <Card cardNumber="1">
-          <div className="task__icon">
+          {/* <div className="task__icon">
             <i className="fas fa-bolt"></i>
+          </div> */}
+          <h2 className={this.props.task.completed ? 'card__title__striked' : 'card__title'}>{this.props.task.task}</h2>
+          {/* <p></p> */}
+          <div className="btns">
+            <Button onClick={() => changeTask(this.props.task.id)}>{this.props.task.completed ? 'unmark' : 'finished'}</Button>
+            <Button onClick={() => deleteItem(this.props.task.id)}>Remove</Button>
           </div>
-          <h2 className="card__title">{this.props.taskText}</h2>
-          <p></p>
-          <Button onClick={() => deleteItem(this.props.id)}>Remove</Button>
         </Card>
       }
       }

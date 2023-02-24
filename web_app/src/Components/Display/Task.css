@@ -10,3 +10,13 @@
   font-weight: 400;
   color: #ffffff;
 }
+.card__title__striked {
+  grid-row: 3/4;
+  font-weight: 400;
+  color: #ffffff;
+  text-decoration: line-through;
+}
+.btns {
+  display: flex;
+  justify-content: center;
+}
