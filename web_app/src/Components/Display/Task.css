@@ -20,3 +20,9 @@
   display: flex;
   justify-content: center;
 }
+.cross {
+  color: white;
+  cursor: default;
+  text-align: right;
+  margin: 0;
+}

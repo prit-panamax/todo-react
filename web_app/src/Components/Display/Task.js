@@ -20,12 +20,10 @@ class Task extends Component {
           {/* <div className="task__icon">
             <i className="fas fa-bolt"></i>
           </div> */}
+          <p className="cross" onClick={() => deleteItem(this.props.task.id)}>&#10006;</p>
           <h2 className={this.props.task.completed ? 'card__title__striked' : 'card__title'}>{this.props.task.task}</h2>
           {/* <p></p> */}
-          <div className="btns">
-            <Button onClick={() => changeTask(this.props.task.id)}>{this.props.task.completed ? 'unmark' : 'finished'}</Button>
-            <Button onClick={() => deleteItem(this.props.task.id)}>Remove</Button>
-          </div>
+          <Button onClick={() => changeTask(this.props.task.id)}>{this.props.task.completed ? 'unmark' : 'finished'}</Button>
         </Card>
       }
       }
