@@ -18,19 +18,19 @@ class FormContainer extends Component {
     this.setState({ isForm: flag });
   }
   updateTask(val) {
-    // console.log(val);
+    // console.log(`'${val}'`);
     const task = val;
     this.setState({ task });
   }
   updateDate(val) {
-    // console.log(val);
+    // console.log(`'${val}'`);
     const date = val;
     this.setState({ date });
   }
   submit() {
-    // console.log(this.state.task);
-    // console.log(this.state.date);
-    const newTask = { id: Date.now(), task: this.state.task, date: this.state.date, completed: false };
+    // console.log(`'${this.state.task}'`);
+    // console.log(`'${this.state.date}'`);
+    const newTask = { id: Date.now(), task: this.state.task.trim().replace(/\s+/g, ' '), date: this.state.date, completed: false };
     this.props.callback(newTask);
     this.toggle();
     const task = "";
@@ -70,7 +70,7 @@ class FormContainer extends Component {
             </div>
             <div className="submit-container">
               <Button
-                disabled={!(this.state.task.trim().length && this.state.date.length)}
+                disabled={!(this.state.task.trim().length && this.state.date.length && this.props.isUnique(this.state.task.replace(/\s+/g, '').toLowerCase() + this.state.date))}
                 onClick={() => {
                   this.submit();
                 }}

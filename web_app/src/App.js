@@ -11,10 +11,12 @@ function App() {
 
   const [list, setList] = useState([]);
   const [currentList, setCurrentList] = useState([]);
+  const [filterDate, setFilterDate] = useState('');
   console.log('list', list);
   console.log('currentList', currentList);
 
   function filterList(date) {
+    setFilterDate(date)
     const filteredList = list.filter((item) => item.date === date);
     setCurrentList(filteredList);
   }
@@ -53,11 +55,17 @@ function App() {
 
   function formCallback(task) {
     setList([...list, task]);
-    setCurrentList([...list, task]);
+    if (filterDate === "" || filterDate === task.date) {
+      setCurrentList([...currentList, task]);
+    }
   }
-
+  function isUnique(taskAndDate) {
+    // if (list.length)
+    return !(list.find((item) => (item.task.replace(/\s/g, '').toLowerCase() + item.date) === taskAndDate));
+    // return true;
+  }
   return (<myContext.Provider value={{ currentList, deleteItem, changeTask, filterList, removeFilter }}>
-    <FormContainer callback={formCallback}></FormContainer>
+    <FormContainer callback={formCallback} isUnique={isUnique}></FormContainer>
     <Container></Container>
   </myContext.Provider>
   );
