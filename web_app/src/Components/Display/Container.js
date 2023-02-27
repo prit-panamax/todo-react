@@ -25,14 +25,14 @@ class Container extends Component {
               <div className='filter'>
                 <input
                   type="date"
-                  value={this.state.dateSelected}
+                  value={this.props.filterDate}
                   onChange={(e) => {
-                    this.selectDate(e.target.value);
+                    this.props.setFilterDate(e.target.value);
                     filterList(e.target.value);
                   }} />
                 <p
                   onClick={() => {
-                    this.selectDate("");
+                    this.props.setFilterDate("");
                     removeFilter();
                   }}>&#10006;</p>
               </div>

@@ -16,7 +16,7 @@ function App() {
   console.log('currentList', currentList);
 
   function filterList(date) {
-    setFilterDate(date)
+    // setFilterDate(date)
     const filteredList = list.filter((item) => item.date === date);
     setCurrentList(filteredList);
   }
@@ -66,7 +66,7 @@ function App() {
   }
   return (<myContext.Provider value={{ currentList, deleteItem, changeTask, filterList, removeFilter }}>
     <FormContainer callback={formCallback} isUnique={isUnique}></FormContainer>
-    <Container></Container>
+    <Container filterDate={filterDate} setFilterDate={setFilterDate}></Container>
   </myContext.Provider>
   );
 }

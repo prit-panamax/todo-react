@@ -61,7 +61,7 @@ class FormContainer extends Component {
               {/* <label> Add Task</label> */}
               <input
                 type="date"
-                // min={new Date().toISOString().slice(0, 10)}
+                min={new Date().toISOString().slice(0, 10)}
                 value={this.state.date}
                 onChange={(e) => {
                   this.updateDate(e.target.value);
